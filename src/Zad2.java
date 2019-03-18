@@ -1,40 +1,29 @@
 import java.util.*;
 
 public class Zad2 {
-    public static int[][] macierzA = new int[100][100];
-    public static int[][] macierzB = new int[100][100];
-    public static int[][] macierzSumy = new int[100][100];
-    public static int[][] macierzRoznicy = new int[100][100];
-    public static int[][] macierzIloczynu = new int[100][100];
-    public static int wymiar;
 
-    public static void generuj() {
+    public static int[][] generuj(int[][] macierz, int wymiar) {
         Random rand = new Random();
 
-        System.out.println("\nMacierz A:");
         for(int i = 0; i < wymiar; i++) {
-
-            for(int j = 0; j < wymiar; j++) {
-                macierzA[i][j] = rand.nextInt(21) - 10;
-                System.out.print(macierzA[i][j] + " ");
-            }
-
-            System.out.println();
+            for(int j = 0; j < wymiar; j++)
+                macierz[i][j] = rand.nextInt(21) - 10;
         }
 
-        System.out.println("\nMacierz B:");
-        for(int i = 0; i < wymiar; i++) {
+        return macierz;
+    }
 
-            for(int j = 0; j < wymiar; j++) {
-                macierzB[i][j] = rand.nextInt(21) - 10;
-                System.out.print(macierzB[i][j] + " ");
-            }
+    public static void wypisz(int[][] macierz, int wymiar) {
+        for (int i=0; i<wymiar; i++) {
+            for (int j=0; j<wymiar; j++)
+                System.out.print(macierz[i][j]);
 
             System.out.println();
         }
     }
 
-    public static void dodaj() {
+    public static void dodaj(int[][] macierzA, int[][] macierzB, int wymiar) {
+        int[][] macierzSumy = new int[wymiar][wymiar];
         System.out.println("\nMacierz sumy (A + B):");
         for(int i = 0; i < wymiar; i++) {
 
@@ -47,7 +36,8 @@ public class Zad2 {
         }
     }
 
-    public static void odejmij() {
+    public static void odejmij(int[][] macierzA, int[][] macierzB, int wymiar) {
+        int[][] macierzRoznicy = new int[wymiar][wymiar];
         System.out.println("\nMacierz różnicy (A - B):");
         for(int i = 0; i < wymiar; i++) {
 
@@ -60,7 +50,8 @@ public class Zad2 {
         }
     }
 
-    public static void pomnoz() {
+    public static void pomnoz(int[][] macierzA, int[][] macierzB, int wymiar) {
+        int[][] macierzIloczynu = new int[wymiar][wymiar];
         System.out.println("\nMacierz iloczynu (A x B):");
         for(int i = 0; i < wymiar; i++) {
 
@@ -82,13 +73,23 @@ public class Zad2 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.print("Podaj wymiar macierzy (maks. 100): ");
-        wymiar = scanner.nextInt();
+        System.out.print("Podaj wymiar macierzy: ");
+        int wymiar = scanner.nextInt();
         scanner.close();
 
-        generuj();
-        dodaj();
-        odejmij();
-        pomnoz();
+        int[][] macierzA = new int[wymiar][wymiar];
+        int[][] macierzB = new int[wymiar][wymiar];
+
+        macierzA = generuj(macierzA, wymiar);
+        macierzB = generuj(macierzB, wymiar);
+
+        System.out.println("Macierz A: ");
+        wypisz(macierzA, wymiar);
+        System.out.println("Macierz B: ");
+        wypisz(macierzB, wymiar);
+
+        dodaj(macierzA, macierzB, wymiar);
+        odejmij(macierzA, macierzB, wymiar);
+        pomnoz(macierzA, macierzB, wymiar);
     }
 }
