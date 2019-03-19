@@ -14,10 +14,11 @@ public class Zad2 {
     }
 
     public static void wypisz(int[][] macierz, int wymiar) {
-        for (int i=0; i<wymiar; i++) {
-            for (int j=0; j<wymiar; j++)
-                System.out.print(macierz[i][j]);
-
+    	
+        for (int i = 0; i < wymiar; i++) {
+            for (int j = 0; j < wymiar; j++)
+                System.out.print(macierz[i][j] + " ");
+            
             System.out.println();
         }
     }
@@ -25,13 +26,13 @@ public class Zad2 {
     public static void dodaj(int[][] macierzA, int[][] macierzB, int wymiar) {
         int[][] macierzSumy = new int[wymiar][wymiar];
         System.out.println("\nMacierz sumy (A + B):");
+        
         for(int i = 0; i < wymiar; i++) {
-
             for(int j = 0; j < wymiar; j++) {
                 macierzSumy[i][j] = macierzA[i][j] + macierzB[i][j];
                 System.out.print(macierzSumy[i][j] + " ");
             }
-
+            
             System.out.println();
         }
     }
@@ -39,13 +40,13 @@ public class Zad2 {
     public static void odejmij(int[][] macierzA, int[][] macierzB, int wymiar) {
         int[][] macierzRoznicy = new int[wymiar][wymiar];
         System.out.println("\nMacierz różnicy (A - B):");
+        
         for(int i = 0; i < wymiar; i++) {
-
             for(int j = 0; j < wymiar; j++) {
                 macierzRoznicy[i][j] = macierzA[i][j] - macierzB[i][j];
                 System.out.print(macierzRoznicy[i][j] + " ");
             }
-
+            
             System.out.println();
         }
     }
@@ -53,8 +54,8 @@ public class Zad2 {
     public static void pomnoz(int[][] macierzA, int[][] macierzB, int wymiar) {
         int[][] macierzIloczynu = new int[wymiar][wymiar];
         System.out.println("\nMacierz iloczynu (A x B):");
+        
         for(int i = 0; i < wymiar; i++) {
-
             for(int j = 0; j < wymiar; j++) {
                 int sumaIloczynow = 0;
 
@@ -72,8 +73,8 @@ public class Zad2 {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-
         System.out.print("Podaj wymiar macierzy: ");
+        
         int wymiar = scanner.nextInt();
         scanner.close();
 
@@ -83,9 +84,10 @@ public class Zad2 {
         macierzA = generuj(macierzA, wymiar);
         macierzB = generuj(macierzB, wymiar);
 
-        System.out.println("Macierz A: ");
+        System.out.println("\nMacierz A: ");
         wypisz(macierzA, wymiar);
-        System.out.println("Macierz B: ");
+        
+        System.out.println("\nMacierz B: ");
         wypisz(macierzB, wymiar);
 
         dodaj(macierzA, macierzB, wymiar);
